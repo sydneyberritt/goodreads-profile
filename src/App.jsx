@@ -1,24 +1,23 @@
-import { useState } from 'react'
 import './App.css'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
+import { Home } from './Pages/home'
+import { Profile } from './Pages/profile'
+import { Highlights } from './Pages/highlights'
+import { Recent } from './Pages/recent'
+import { Wrapped } from './Pages/wrapped'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-      </div>
-      <h1>Goodreads Profile</h1>
-      <div className="card">
-        <button>
-          Export Goodreads Data 
-        </button>
-      </div>
-      <p className="read-the-docs">
-        Upload your Goodreads CSV here
-      </p>
-      <input type="file" />
-    </>
+      <Router>
+        <Routes>
+          <Route path ="/" element={<Home/>}/>
+          <Route path ="/profile" element={<Profile/>}/>
+          <Route path ="/highlights" element={<Highlights/>}/>
+          <Route path ="/recent" element={<Recent/>}/>
+          <Route path ="/wrapped" element={<Wrapped/>}/>
+        </Routes>
+      </Router>
   )
 }
 
