@@ -1,8 +1,25 @@
 import './Pages.css'
 import { Link } from 'react-router-dom'
-export function Home() {
+import Papa from "papaparse";
+import { useState } from 'react';
 
-  return (
+
+export function Home() {
+    // State to store parsed data
+    const [parsedData, setParsedData] = useState([]);
+
+    const changeHandler = (event) => {
+    // Parsing file data 
+    Papa.parse(event.target.files[0], {
+        header: true,
+        skipEmptyLines: true,
+        complete: function (results) {
+            // Parsed Data in array format
+            setParsedData(results.data);
+        },
+      });
+    }
+    return (
     <>
       <div>
       </div>
@@ -17,7 +34,10 @@ export function Home() {
       <p className="read-the-docs">
         Upload your Goodreads CSV here
       </p>
-      <input type="file" />
+      <input type="file" 
+      name = "file"
+      accept = ".csv"
+      onChange={changeHandler}/>
       <div className="card">
       <Link to="/profile">
         <button>

@@ -1,6 +1,7 @@
 import './App.css'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { Home } from './Pages/home'
+import { NavBar } from './NavBar'
 import { Profile } from './Pages/profile'
 import { Highlights } from './Pages/highlights'
 import { Recent } from './Pages/recent'
@@ -10,6 +11,7 @@ function App() {
 
   return (
       <Router>
+        <NavBar/>
         <Routes>
           <Route path ="/" element={<Home/>}/>
           <Route path ="/profile" element={<Profile/>}/>

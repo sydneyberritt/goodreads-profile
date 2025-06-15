@@ -1,0 +1,28 @@
+.navbar{
+    width: 100px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color:#f9f9f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navbar ul{
+    list-style: none;
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
+    transition: 0.3s;
+}
+
+.navbar li a{
+    color: black;
+}
+
+.navbar li a:hover{
+    color: rgb(48, 47, 47);
+}
