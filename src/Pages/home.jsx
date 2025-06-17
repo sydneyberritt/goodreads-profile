@@ -1,24 +1,20 @@
 import './Pages.css'
 import { Link } from 'react-router-dom'
-import Papa from "papaparse";
-import { useState } from 'react';
+import { useContext } from 'react';
+import { BookDataContext } from '../BookDataContext';
 
 
 export function Home() {
-    // State to store parsed data
-    const [parsedData, setParsedData] = useState([]);
+    // Get parseCSV function 
+    const { parseCsv } = useContext(BookDataContext);
 
-    const changeHandler = (event) => {
-    // Parsing file data 
-    Papa.parse(event.target.files[0], {
-        header: true,
-        skipEmptyLines: true,
-        complete: function (results) {
-            // Parsed Data in array format
-            setParsedData(results.data);
-        },
-      });
-    }
+    const fileUpload = (event) => {
+        // Parsing file data 
+        if(event.target.files.length > 0){
+            parseCsv(event.target.files[0])
+        }
+    };
+
     return (
     <>
       <div>
@@ -37,7 +33,7 @@ export function Home() {
       <input type="file" 
       name = "file"
       accept = ".csv"
-      onChange={changeHandler}/>
+      onChange={fileUpload}/>
       <div className="card">
       <Link to="/profile">
         <button>
