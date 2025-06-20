@@ -1,4 +1,3 @@
-import './Pages.css'
 export function Wrapped() {
 
   return (
